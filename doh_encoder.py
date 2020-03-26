@@ -44,7 +44,8 @@ browser.get('http://122.54.82.254:65428/')
 user_field = browser.find_element_by_id('UserName')
 pass_field = browser.find_element_by_id('Password')
 login = browser.find_element_by_xpath("//input[@value='Log in']")
-
+user_field.send_keys('NATE155')
+pass_field.send_keys('123456')
 login.click()
 #navigate to vaccination entry page
 create_new_profile = browser.find_element_by_xpath("//button[@data-toggle='modal']")
