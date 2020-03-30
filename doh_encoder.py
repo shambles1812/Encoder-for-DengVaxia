@@ -11,7 +11,7 @@ import string
 import time
 
 #load Workbook
-wb = load_workbook('Database3.xlsx')
+wb = load_workbook('Database New.xlsx')
 alphabet = list(string.ascii_uppercase)
 #cell colors
 greenFill = PatternFill(start_color='2ecc71',
@@ -35,6 +35,7 @@ class get_worksheet_data:
         #get the number of data from page
         data_to_encode = sheet.max_column 
         self.data_to_encode = data_to_encode
+        print(data_to_encode)
         #profile 1 profile 2 profile 3 etc..
         profile_list = list(range(1,profiles_to_encode+1))
         self.profile_list = profile_list
@@ -62,10 +63,8 @@ class get_worksheet_data:
                 return self.sheet[self.profile_users[self.user_number-1][index_no-1]].value
     def set_to_ok(self,index_no):
             self.sheet[self.profile_users[self.user_number-1][index_no-1]].fill = greenFill
-           # wb.save('Stylized.xlsx')
     def set_to_not_ok(self,index_no):
             self.sheet[self.profile_users[self.user_number-1][index_no-1]].fill = redFill
-           # wb.save('Stylized.xlsx')
 pageData1 = get_worksheet_data(1,1)
 print (get_worksheet_data(1,1).get_specific_data(1))
 #main loop 
@@ -265,12 +264,17 @@ for profile in pageData1.profile_list:
             else: 
                 get_worksheet_data(1,profile).set_to_not_ok(number)
             press_tab() 
-        wb.save('Stylized3.xlsx')
+        wb.save('Stylized4.xlsx')
+        #after debug uncomment this out
+        #press_enter()
         input('wait')
+        #input to level of education
+        def input_level_of_education(profile):
+            pass
+
     functions_list = ['input_data_on_gen_info(profile)','id_input']
-    #input_to__general_information(profile)
+
    # make a new for loop that verifies 14 times and executes the input command for each page every loop
-    
    #idea is check if the first field has value and if yes skip that page if no fill that page with the right info
     if not_filled(id_field) == True:
         eval(functions_list[0])
